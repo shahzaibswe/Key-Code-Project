@@ -1,10 +1,7 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const container = document.getElementById("container");
+let timeoutId = null;
 
-function generateHTML(key, code, keyCode) {
+function generateHTML(key = "Press any key", code = "-", keyCode = "-") {
     return `
     <div class="key-container">
         <h4>Key</h4>
@@ -20,3 +17,21 @@ function generateHTML(key, code, keyCode) {
     </div>
     `;
 }
+
+// Initial state
+container.innerHTML = generateHTML();
+
+window.addEventListener("keydown", (e) => {
+    container.innerHTML = generateHTML(e.key, e.code, e.keyCode);
+
+    // Clear previous timeout if any to prevent flickering on hold
+    if (timeoutId) {
+        clearTimeout(timeoutId);
+    }
+
+    container.classList.add("pressed");
+    timeoutId = setTimeout(() => {
+        container.classList.remove("pressed");
+        timeoutId = null;
+    }, 100);
+});

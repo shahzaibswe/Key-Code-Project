@@ -1,22 +1,24 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const keyDisplay = document.getElementById('key');
+const codeDisplay = document.getElementById('code');
+const keyCodeDisplay = document.getElementById('keyCode');
+const init = document.getElementById('init');
+const containers = document.querySelectorAll('.key-container');
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+window.addEventListener('keydown', (e) => {
+  if (init.style.display !== 'none') {
+    init.style.display = 'none';
+    containers.forEach(c => { if(c !== init) c.style.display = 'flex'; });
+  }
+
+  keyDisplay.textContent = e.key === ' ' ? 'Space' : e.key;
+  codeDisplay.textContent = e.code;
+  keyCodeDisplay.textContent = e.keyCode;
+
+  containers.forEach(c => {
+    if (c.style.display !== 'none') {
+      c.classList.remove('pressed');
+      void c.offsetWidth; // Trigger reflow
+      c.classList.add('pressed');
+    }
+  });
+});

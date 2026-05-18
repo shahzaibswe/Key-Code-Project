@@ -1,22 +1,32 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const startMessage = document.getElementById("start-message");
+const displayContainer = document.getElementById("display-container");
+const keyValue = document.getElementById("key-value");
+const codeValue = document.getElementById("code-value");
+const keycodeValue = document.getElementById("keycode-value");
+const mainContainer = document.getElementById("main-container");
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+let isFirstKey = true;
+let animationTimeout;
+
+window.addEventListener("keydown", (e) => {
+    if (isFirstKey) {
+        startMessage.style.display = "none";
+        displayContainer.style.display = "flex";
+        isFirstKey = false;
+    }
+
+    // Update values
+    keyValue.textContent = e.key === " " ? "Space" : e.key;
+    codeValue.textContent = e.code;
+    keycodeValue.textContent = e.keyCode;
+
+    // Visual feedback
+    mainContainer.classList.remove("pressed");
+    void mainContainer.offsetWidth; // Force reflow
+    mainContainer.classList.add("pressed");
+
+    clearTimeout(animationTimeout);
+    animationTimeout = setTimeout(() => {
+        mainContainer.classList.remove("pressed");
+    }, 100);
+});

@@ -1,22 +1,23 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const insert = document.getElementById("insert");
 
-function generateHTML(key, code, keyCode) {
-    return `
+window.addEventListener("keydown", (event) => {
+  // Visual feedback: pulse animation
+  insert.classList.remove("pressed");
+  void insert.offsetWidth; // Force reflow
+  insert.classList.add("pressed");
+
+  insert.innerHTML = `
     <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
+        <h4>event.key</h4>
+        <div class="Key-Content">${event.key === " " ? "Space" : event.key}</div>
     </div>
     <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
+        <h4>event.code</h4>
+        <div class="Key-Content">${event.code}</div>
     </div>
     <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
+        <h4>event.keyCode (legacy)</h4>
+        <div class="Key-Content">${event.keyCode}</div>
     </div>
-    `;
-}
+  `;
+});

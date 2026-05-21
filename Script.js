@@ -1,5 +1,5 @@
 const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
+
 window.addEventListener("keydown", (e) => {
     container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
 });

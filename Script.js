@@ -1,22 +1,18 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const insert = document.getElementById("insert");
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
+window.addEventListener("keydown", (event) => {
+  insert.innerHTML = `
+    <div class="key-container" aria-labelledby="key-label">
+        <h4 id="key-label">event.key</h4>
+        <div class="Key-Content">${event.key === " " ? "Space" : event.key}</div>
     </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
+    <div class="key-container" aria-labelledby="code-label">
+        <h4 id="code-label">event.code</h4>
+        <div class="Key-Content">${event.code}</div>
     </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
+    <div class="key-container" aria-labelledby="keycode-label">
+        <h4 id="keycode-label">event.keyCode</h4>
+        <div class="Key-Content">${event.keyCode}</div>
     </div>
     `;
-}
+});

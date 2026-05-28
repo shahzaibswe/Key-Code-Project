@@ -1,0 +1,3 @@
+## 2025-05-15 - [Developer Experience & Accessibility in Key Code Explorer]
+**Learning:** For utility tools used by developers, using technical API property names (e.g., `event.key`, `event.keyCode`) as labels provides more clarity than generic terms. To maintain accessibility during dynamic content replacement, `aria-live="polite"` should be placed on a persistent wrapper element rather than the content being replaced to ensure screen readers announce changes consistently.
+**Action:** Always prefer technical accuracy in labels for developer-centric tools. Ensure parent containers have `position: relative` when using absolutely positioned labels to guarantee visual stability during state transitions.

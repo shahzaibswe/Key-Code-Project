@@ -1,22 +1,30 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const insert = document.getElementById("insert");
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+window.addEventListener("keydown", (event) => {
+  insert.innerHTML = "";
+
+  const keyCodes = {
+    "event.key": event.key === " " ? "Space" : event.key,
+    "event.code": event.code,
+    "event.keyCode": event.keyCode,
+  };
+
+  for (const label in keyCodes) {
+    const keyContainer = document.createElement("div");
+    keyContainer.className = "key-container";
+
+    const title = document.createElement("h4");
+    const titleId = label.replace(".", "-");
+    title.id = titleId;
+    title.textContent = label;
+
+    const content = document.createElement("div");
+    content.className = "Key-Content";
+    content.textContent = keyCodes[label];
+    content.setAttribute("aria-labelledby", titleId);
+
+    keyContainer.appendChild(title);
+    keyContainer.appendChild(content);
+    insert.appendChild(keyContainer);
+  }
+});

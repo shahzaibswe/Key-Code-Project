@@ -1,22 +1,22 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const insert = document.getElementById('insert');
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+window.addEventListener('keydown', (event) => {
+  // Clear the initial instruction if it exists
+  const instruction = document.getElementById('instruction');
+  if (instruction) {
+    instruction.style.display = 'none';
+  }
+
+  const keyContents = document.querySelectorAll('.Key-Content');
+
+  // Property mapping: [event.key, event.code, event.keyCode]
+  const values = [
+    event.key === ' ' ? 'Space' : event.key,
+    event.code,
+    event.keyCode
+  ];
+
+  keyContents.forEach((content, index) => {
+    content.textContent = values[index];
+  });
+});

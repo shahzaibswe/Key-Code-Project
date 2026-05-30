@@ -1,0 +1,3 @@
+## 2025-05-14 - Accessible Dynamic Content & Onboarding
+**Learning:** When updating dynamic content via `innerHTML`, place the `aria-live="polite"` attribute on the *persistent* wrapper element rather than the content being replaced. This ensures screen reader announcements persist across state changes. Additionally, replacing empty initial states with clear instructional messages (e.g., 'Press any key...') significantly improves user onboarding.
+**Action:** Always check for persistent containers to host `aria-live` attributes and ensure every interactive tool has a helpful 'empty state' or 'onboarding state' instruction.

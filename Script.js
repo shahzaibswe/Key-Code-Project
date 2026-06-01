@@ -1,22 +1,44 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
-});
+const insert = document.getElementById("insert");
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
+function createKeyCard(label, id) {
+    const container = document.createElement("div");
+    container.className = "key-container";
+    container.setAttribute("aria-labelledby", `label-${id}`);
+
+    const h4 = document.createElement("h4");
+    h4.id = `label-${id}`;
+    h4.textContent = label;
+
+    const content = document.createElement("div");
+    content.className = "Key-Content";
+    content.textContent = "-";
+
+    container.appendChild(h4);
+    container.appendChild(content);
+    return { container, content };
 }
+
+let keyCards = null;
+
+window.addEventListener("keydown", (event) => {
+    if (!keyCards) {
+        insert.innerHTML = "";
+        const keyInfo = createKeyCard("event.key", "key");
+        const codeInfo = createKeyCard("event.code", "code");
+        const keyCodeInfo = createKeyCard("event.keyCode", "keycode");
+
+        keyCards = {
+            key: keyInfo.content,
+            code: codeInfo.content,
+            keyCode: keyCodeInfo.content
+        };
+
+        insert.appendChild(keyInfo.container);
+        insert.appendChild(codeInfo.container);
+        insert.appendChild(keyCodeInfo.container);
+    }
+
+    keyCards.key.textContent = event.key === " " ? "Space" : event.key;
+    keyCards.code.textContent = event.code;
+    keyCards.keyCode.textContent = event.keyCode;
+});

@@ -40,6 +40,7 @@
     border-radius: 10px;
     border: 1px solid rgb(255, 255,255,0.18);
     transition:background 0.3s ease-in-out; 
+    position: relative;
 }
 
 .key-container h4{
@@ -58,4 +59,18 @@
 }
 .key-container:hover{
    background-color: rgba(0, 255, 255,0.7);
+}
+.instruction {
+    font-size: 24px;
+    font-weight: bold;
+    color: #afff;
+    padding: 20px;
+}
+.hidden {
+    display: none !important;
+}
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

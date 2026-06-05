@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Key Code Explorer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="key-container" id="key-container">
-            <h4 class="animation">key</h4>
-            <div class="Key-Content animation " >-</div>
+        <div id="instruction" class="instruction">
+            Press any key to get the JavaScript event keycode
+        </div>
+        <div id="results" class="results hidden" aria-live="polite">
+            <div class="key-container">
+                <h4>event.key</h4>
+                <div id="key-value" class="Key-Content">-</div>
+            </div>
 
-            <h4 class="animation">code</h4>
-            <div class="Key-Content" >-</div>
-            <h4 class="animation">Key Code</h4>
-            <div class="Key-Content" >-</div>
+            <div class="key-container">
+                <h4>event.code</h4>
+                <div id="code-value" class="Key-Content">-</div>
+            </div>
+
+            <div class="key-container">
+                <h4>event.keyCode</h4>
+                <div id="keycode-value" class="Key-Content">-</div>
+            </div>
         </div>
     </div>
 

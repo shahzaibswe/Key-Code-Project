@@ -1,47 +1,49 @@
- *{
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-
- }
- body{
+}
+body{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     min-height: 100vh;
     background: linear-gradient( to right, #2e1e4f , #47135e);
- }
- .container{
+}
+.container{
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: rgba(255, 255, 2555, 0.25);
+    background: rgba(255, 255, 255, 0.25);
     box-shadow: 0px 8px 32px 0px  rgba(31, 38, 135, 0.35);
-   backdrop-filter: blur(4px); 
+    backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255,0.18);
     transition: background 0.3s ease-in-out;
-      
- }
- .key-container{
-    display: flex ;
+}
+.container:hover{
+   background-color: rgba(255, 255, 255, 0.35);
+}
+.key-container{
+    display: flex;
     flex-direction: column;
     font-size: 20px;
     font-weight: bold;
     padding: 20px;
     color: #afff;
-    margin: 2.5rem;
+    margin: 1.5rem;
     min-width: 150px;
     background: rgba(0, 255, 255,0.5);
     box-shadow: 0px 8px 32px 0px rgba(31, 38, 135 , 0.37);
     backdrop-filter: blur(2.52px) ;
     border-radius: 10px;
     border: 1px solid rgb(255, 255,255,0.18);
-    transition:background 0.3s ease-in-out; 
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
 }
-
 .key-container h4{
     position: absolute;
     top: -2rem;
@@ -51,11 +53,29 @@
 }
 .Key-Content{
    margin-top: 10px;
-
 }
-.container:hover{
-   background-color: rgba(255, 255, 255, 0.35);
-}
-.key-container:hover{
+.key-container:hover, .key-container:focus{
    background-color: rgba(0, 255, 255,0.7);
+   transform: scale(1.05);
+   outline: none;
+   box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.8);
+}
+.key-container.copied::after {
+    content: 'Copied!';
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    animation: fadeInOut 1s ease-in-out forwards;
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    20% { opacity: 1; transform: translate(-50%, 0); }
+    80% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -10px); }
 }

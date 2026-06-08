@@ -1,22 +1,50 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
+const onboarding = document.getElementById("onboarding");
+const displayArea = document.getElementById("display-area");
+const keyValue = document.getElementById("key-value");
+const codeValue = document.getElementById("code-value");
+const keycodeValue = document.getElementById("keycode-value");
+
 window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
+    // If the user is typing in the body, update the display
+    // But if they are focusing an interactive element and pressing Enter/Space, handle that separately
+    if (document.activeElement.getAttribute("role") === "button" && (e.key === "Enter" || e.key === " ")) {
+        return;
+    }
+
+    if (displayArea.style.display === "none") {
+        onboarding.style.display = "none";
+        displayArea.style.display = "block";
+    }
+
+    keyValue.textContent = e.key === " " ? "space" : e.key;
+    codeValue.textContent = e.code;
+    keycodeValue.textContent = e.keyCode;
 });
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
+function setupCopy(cardId, valueId) {
+    const card = document.getElementById(cardId);
+    const valueEl = document.getElementById(valueId);
+
+    const copyToClipboard = () => {
+        const text = valueEl.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            card.classList.add("copied");
+            setTimeout(() => {
+                card.classList.remove("copied");
+            }, 500);
+        });
+    };
+
+    card.addEventListener("click", copyToClipboard);
+    card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            e.stopPropagation();
+            copyToClipboard();
+        }
+    });
 }
+
+setupCopy("card-key", "key-value");
+setupCopy("card-code", "code-value");
+setupCopy("card-keycode", "keycode-value");

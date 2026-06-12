@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving Initial State Accessibility and Clarity
+**Learning:** Initial states that show empty result containers can be confusing and fail to provide guidance. A clear onboarding message ("Press any key...") improves the user experience for first-time visitors. Additionally, using `aria-live="polite"` on the results container ensures that dynamic keyboard events are accessible to screen reader users who would otherwise miss the visual update.
+**Action:** Always replace empty initial result states with instructional onboarding text and ensure dynamic updates are wrapped in ARIA live regions for better accessibility.

@@ -1,0 +1,3 @@
+## 2025-05-15 - Key Code Explorer Accessibility and UX Refactor
+**Learning:** For interactive tools that rely on keyboard events, ensuring that individual data cards are keyboard-focusable (`tabindex="0"`) and include a clear "Click to copy" call-to-action significantly improves discoverability. Using an ARIA live region (`aria-live="polite"`) is essential for announcing dynamic content updates (like key presses) to screen reader users who cannot see the visual cards.
+**Action:** Always include a persistent ARIA live announcer for single-page applications with high dynamic content turnover, and pair visual feedback (like "Copied!") with semantic roles for better inclusivity.

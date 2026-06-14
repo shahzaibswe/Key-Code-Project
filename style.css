@@ -17,15 +17,16 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: rgba(255, 255, 2555, 0.25);
+    background: rgba(255, 255, 255, 0.25);
     box-shadow: 0px 8px 32px 0px  rgba(31, 38, 135, 0.35);
-   backdrop-filter: blur(4px); 
+   backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255,0.18);
     transition: background 0.3s ease-in-out;
-      
+
  }
  .key-container{
+    position: relative;
     display: flex ;
     flex-direction: column;
     font-size: 20px;
@@ -39,7 +40,11 @@
     backdrop-filter: blur(2.52px) ;
     border-radius: 10px;
     border: 1px solid rgb(255, 255,255,0.18);
-    transition:background 0.3s ease-in-out; 
+    transition: background 0.3s ease-in-out, transform 0.1s ease;
+}
+
+.key-container:active {
+    transform: scale(0.95);
 }
 
 .key-container h4{
@@ -58,4 +63,15 @@
 }
 .key-container:hover{
    background-color: rgba(0, 255, 255,0.7);
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+:focus-visible {
+    outline: 3px solid #0ff;
+    outline-offset: 4px;
 }

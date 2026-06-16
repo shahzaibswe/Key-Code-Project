@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Code Explorer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="key-container" id="key-container">
-            <h4 class="animation">key</h4>
-            <div class="Key-Content animation " >-</div>
-
-            <h4 class="animation">code</h4>
-            <div class="Key-Content" >-</div>
-            <h4 class="animation">Key Code</h4>
-            <div class="Key-Content" >-</div>
-        </div>
+  <div class="container" aria-live="polite">
+    <div id="instruction" class="key-container">
+      Press any key to get the JavaScript event keycode
     </div>
+    <div id="display-container" style="display: none;">
+      <div class="key-container">
+        <h4>Key</h4>
+        <div id="key-display" class="Key-Content">-</div>
+      </div>
+      <div class="key-container">
+        <h4>Code</h4>
+        <div id="code-display" class="Key-Content">-</div>
+      </div>
+      <div class="key-container">
+        <h4>Key Code</h4>
+        <div id="keycode-display" class="Key-Content">-</div>
+      </div>
+    </div>
+  </div>
 
-    <script src="Script.js" ></script>
+  <script src="Script.js"></script>
 </body>
 </html>

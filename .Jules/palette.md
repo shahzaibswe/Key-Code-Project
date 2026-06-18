@@ -1,0 +1,3 @@
+## 2025-05-14 - UX Foundations for Keyboard Tools
+**Learning:** Initial states with placeholders (like "-") can be confusing; using instructional text ("Press any key...") significantly improves onboarding. For event-driven tools, `aria-live="polite"` is essential for screen reader accessibility, and tactile visual feedback (CSS scale transforms) makes the interaction feel more responsive. Correcting internal logic (e.g., using `keyCode` instead of `charCodeAt`) is a UX requirement because users expect accurate technical data.
+**Action:** Always replace empty initial states with clear instructions and ensure real-time UI updates are announced to assistive technologies.

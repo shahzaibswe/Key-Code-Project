@@ -1,14 +1,20 @@
 const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
+const mainContainer = document.querySelector(".container");
+
 window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
+  mainContainer.classList.add("pressed");
+  container.innerHTML = generateHTML(e.key, e.code, e.keyCode);
+});
+
+window.addEventListener("keyup", () => {
+  mainContainer.classList.remove("pressed");
 });
 
 function generateHTML(key, code, keyCode) {
-    return `
+  return `
     <div class="key-container">
         <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
+        <div class="Key-Content">${key === " " ? "Space" : key}</div>
     </div>
     <div class="key-container">
         <h4>Code</h4>

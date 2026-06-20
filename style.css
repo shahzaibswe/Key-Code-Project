@@ -58,4 +58,9 @@
 }
 .key-container:hover{
    background-color: rgba(0, 255, 255,0.7);
+   cursor: pointer;
+}
+.key-container:focus-visible{
+   outline: 3px solid #fff;
+   outline-offset: 4px;
 }

@@ -1,0 +1,3 @@
+## 2025-05-15 - Interactive Clipboard Cards for Explorer Tools
+**Learning:** For explorer-style tools, transforming static data displays into interactive "Click to Copy" cards significantly increases utility. Using the `dataset` API to store values on DOM elements is safer than interpolating into HTML strings, as it avoids escaping issues with special characters. Keyboard accessibility (Tab + Enter/Space) is crucial for these custom interactive elements to ensure they remain usable for all users.
+**Action:** When displaying technical values (hashes, IDs, event properties), wrap them in accessible, interactive containers with visual feedback (e.g., "Copied!") and clear hover/focus states.

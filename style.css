@@ -59,3 +59,10 @@
 .key-container:hover{
    background-color: rgba(0, 255, 255,0.7);
 }
+.key-container:focus-visible {
+   outline: 3px solid #afff;
+   background-color: rgba(0, 255, 255,0.7);
+}
+.key-container:active {
+   transform: scale(0.95);
+}

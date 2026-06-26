@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Code Explorer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="key-container" id="key-container">
-            <h4 class="animation">key</h4>
-            <div class="Key-Content animation " >-</div>
-
-            <h4 class="animation">code</h4>
-            <div class="Key-Content" >-</div>
-            <h4 class="animation">Key Code</h4>
-            <div class="Key-Content" >-</div>
-        </div>
+  <div class="container">
+    <h1 id="title" style="color: #afff; margin: 1rem 0;">Press any key to get the Key Info</h1>
+    <div id="display" style="display: none; justify-content: center; flex-wrap: wrap;" aria-live="polite">
+      <div class="key-container" style="position: relative;"><h4>Key</h4><div id="key-v" class="Key-Content">?</div></div>
+      <div class="key-container" style="position: relative;"><h4>Code</h4><div id="code-v" class="Key-Content">?</div></div>
+      <div class="key-container" id="copy-c" role="button" tabindex="0" style="position: relative; cursor: pointer;" aria-label="Key Code. Click to copy">
+        <h4>Key Code</h4><div id="keycode-v" class="Key-Content">?</div>
+      </div>
     </div>
-
-    <script src="Script.js" ></script>
+  </div>
+  <script src="Script.js"></script>
 </body>
 </html>

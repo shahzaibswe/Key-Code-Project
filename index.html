@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Key Code Explorer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="key-container" id="key-container">
-            <h4 class="animation">key</h4>
-            <div class="Key-Content animation " >-</div>
-
-            <h4 class="animation">code</h4>
-            <div class="Key-Content" >-</div>
-            <h4 class="animation">Key Code</h4>
-            <div class="Key-Content" >-</div>
+    <div class="container" id="container" aria-live="polite" aria-atomic="true">
+        <div id="instruction">Press any key to get the Key Info</div>
+        <div id="key-display" style="display: none; flex-wrap: wrap; justify-content: center;">
+            <div class="key-container"><h4 class="animation">Key</h4><div class="Key-Content animation" id="key-v">-</div></div>
+            <div class="key-container"><h4 class="animation">Code</h4><div class="Key-Content animation" id="code-v">-</div></div>
+            <div class="key-container"><h4 class="animation">Key Code</h4><div class="Key-Content animation" id="keycode-v">-</div></div>
         </div>
     </div>
 

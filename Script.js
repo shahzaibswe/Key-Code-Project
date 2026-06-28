@@ -1,22 +1,23 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
+const instruction = document.getElementById("instruction");
+const display = document.getElementById("display");
+const keyV = document.getElementById("key-v");
+const codeV = document.getElementById("code-v");
+const keycodeV = document.getElementById("keycode-v");
+const cards = document.querySelectorAll(".key-container");
+
 window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
+  if (display.style.display === "none") {
+    instruction.style.display = "none";
+    display.style.display = "flex";
+  }
+
+  keyV.textContent = e.key === " " ? "Space" : e.key;
+  codeV.textContent = e.code;
+  keycodeV.textContent = e.keyCode;
+
+  cards.forEach(card => card.classList.add("pressed"));
 });
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+window.addEventListener("keyup", () => {
+  cards.forEach(card => card.classList.remove("pressed"));
+});

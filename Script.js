@@ -1,22 +1,44 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
+const keyV = document.getElementById('key-v');
+const codeV = document.getElementById('code-v');
+const keycodeV = document.getElementById('keycode-v');
+const instruction = document.getElementById('instruction');
+const cards = document.querySelectorAll('.key-card');
+
+window.addEventListener('keydown', (e) => {
+  // Update values
+  keyV.textContent = e.key === ' ' ? 'Space' : e.key;
+  codeV.textContent = e.code;
+  keycodeV.textContent = e.keyCode;
+
+  // Update instruction if it's the first key press
+  if (instruction.textContent !== 'Key Info Detected') {
+    instruction.textContent = 'Key Info Detected';
+  }
 });
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const value = card.querySelector('.Key-Content').textContent;
+    if (value === '-') return;
+
+    navigator.clipboard.writeText(value).then(() => {
+      const hint = card.querySelector('.copy-hint');
+      const originalText = hint.textContent;
+      hint.textContent = 'Copied!';
+      hint.style.color = '#00ff00';
+
+      setTimeout(() => {
+        hint.textContent = originalText;
+        hint.style.color = '';
+      }, 1500);
+    });
+  });
+
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      card.click();
+    }
+  });
+});

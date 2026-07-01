@@ -1,22 +1,15 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
+const keyV = document.getElementById('key-v');
+const codeV = document.getElementById('code-v');
+const keycodeV = document.getElementById('keycode-v');
+const container = document.getElementById('key-container');
+
+window.addEventListener('keydown', (e) => {
+  keyV.textContent = e.key === ' ' ? 'Space' : e.key;
+  codeV.textContent = e.code;
+  keycodeV.textContent = e.keyCode;
+  container.classList.add('pressed');
 });
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+window.addEventListener('keyup', () => {
+  container.classList.remove('pressed');
+});

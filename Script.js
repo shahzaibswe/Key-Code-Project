@@ -1,22 +1,50 @@
-const container = document.getElementById("key-container");
-container.innerHTML = generateHTML("-", " -", "_");
-window.addEventListener("keydown", (e) => {
-    container.innerHTML = generateHTML(e.key, e.code, e.key.charCodeAt(0));
+const instruction = document.getElementById('instruction');
+const displayArea = document.getElementById('display-area');
+const keyElement = document.getElementById('key-v');
+const codeElement = document.getElementById('code-v');
+const keyCodeElement = document.getElementById('keycode-v');
+const cards = document.querySelectorAll('.key-container');
+
+window.addEventListener('keydown', (e) => {
+  if (instruction.style.display !== 'none') {
+    instruction.style.display = 'none';
+    displayArea.style.display = 'block';
+  }
+
+  keyElement.textContent = e.key === " " ? "Space" : e.key;
+  codeElement.textContent = e.code;
+  keyCodeElement.textContent = e.keyCode;
+
+  cards.forEach(card => card.classList.add('pressed'));
 });
 
-function generateHTML(key, code, keyCode) {
-    return `
-    <div class="key-container">
-        <h4>Key</h4>
-        <div class="Key-Content">${key === " " ? "space" : key}</div>
-    </div>
-    <div class="key-container">
-        <h4>Code</h4>
-        <div class="Key-Content">${code}</div>
-    </div>
-    <div class="key-container">
-        <h4>Key Code</h4>
-        <div class="Key-Content">${keyCode}</div>
-    </div>
-    `;
-}
+window.addEventListener('keyup', () => {
+  cards.forEach(card => card.classList.remove('pressed'));
+});
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const value = card.querySelector('.Key-Content').textContent;
+    if (value === "-") return;
+
+    navigator.clipboard.writeText(value).then(() => {
+      const hint = card.querySelector('.copy-hint');
+      const originalHint = hint.textContent;
+
+      card.classList.add('success');
+      hint.textContent = 'Copied!';
+
+      setTimeout(() => {
+        card.classList.remove('success');
+        hint.textContent = originalHint;
+      }, 1500);
+    });
+  });
+
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
+    }
+  });
+});

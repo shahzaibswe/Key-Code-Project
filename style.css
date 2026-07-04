@@ -17,13 +17,13 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: rgba(255, 255, 2555, 0.25);
+    background: rgba(255, 255, 255, 0.25);
     box-shadow: 0px 8px 32px 0px  rgba(31, 38, 135, 0.35);
-   backdrop-filter: blur(4px); 
+   backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255,0.18);
     transition: background 0.3s ease-in-out;
-      
+
  }
  .key-container{
     display: flex ;
@@ -39,7 +39,20 @@
     backdrop-filter: blur(2.52px) ;
     border-radius: 10px;
     border: 1px solid rgb(255, 255,255,0.18);
-    transition:background 0.3s ease-in-out; 
+    transition: background 0.3s ease-in-out, transform 0.1s ease;
+    position: relative;
+}
+
+.key-container.pressed {
+    transform: scale(0.95);
+    background-color: rgba(0, 255, 255, 0.8);
+    box-shadow: 0px 0px 15px 5px rgba(0, 255, 255, 0.5);
+}
+
+.key-container:focus-visible {
+    outline: 2px solid #0ff;
+    outline-offset: 4px;
+    background-color: rgba(0, 255, 255, 0.6);
 }
 
 .key-container h4{
@@ -51,7 +64,23 @@
 }
 .Key-Content{
    margin-top: 10px;
+}
 
+.copy-hint {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.key-container:hover .copy-hint {
+    opacity: 1;
+}
+
+.key-container.success {
+    background-color: rgba(0, 255, 127, 0.6);
+    box-shadow: 0px 0px 15px 5px rgba(0, 255, 127, 0.4);
 }
 .container:hover{
    background-color: rgba(255, 255, 255, 0.35);

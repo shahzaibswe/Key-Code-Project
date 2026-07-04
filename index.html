@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Key Code Explorer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="key-container" id="key-container">
-            <h4 class="animation">key</h4>
-            <div class="Key-Content animation " >-</div>
-
-            <h4 class="animation">code</h4>
-            <div class="Key-Content" >-</div>
-            <h4 class="animation">Key Code</h4>
-            <div class="Key-Content" >-</div>
+    <main role="main">
+        <div class="container" id="main-container">
+            <div id="instruction" class="Key-Content" style="color: #afff; font-weight: bold; font-size: 24px;">Press any key to get the Key Info</div>
+            <div id="display-area" style="display: none;">
+                <div class="key-container" role="button" tabindex="0" aria-labelledby="key-label">
+                    <h4 id="key-label">Key</h4>
+                    <div class="Key-Content" id="key-v">-</div>
+                    <small class="copy-hint" aria-hidden="true">Click to copy</small>
+                </div>
+                <div class="key-container" role="button" tabindex="0" aria-labelledby="code-label">
+                    <h4 id="code-label">Code</h4>
+                    <div class="Key-Content" id="code-v">-</div>
+                    <small class="copy-hint" aria-hidden="true">Click to copy</small>
+                </div>
+                <div class="key-container" role="button" tabindex="0" aria-labelledby="keycode-label">
+                    <h4 id="keycode-label">Key Code</h4>
+                    <div class="Key-Content" id="keycode-v">-</div>
+                    <small class="copy-hint" aria-hidden="true">Click to copy</small>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
     <script src="Script.js" ></script>
 </body>

@@ -3,21 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Key Code Explorer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="key-container" id="key-container">
-            <h4 class="animation">key</h4>
-            <div class="Key-Content animation " >-</div>
+    <main class="container" id="main-container">
+        <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Key Code Explorer</h1>
 
-            <h4 class="animation">code</h4>
-            <div class="Key-Content" >-</div>
-            <h4 class="animation">Key Code</h4>
-            <div class="Key-Content" >-</div>
+        <div id="onboarding">
+            <div class="key-container">
+                <div class="Key-Content">Press any key to get the Key Info</div>
+            </div>
         </div>
-    </div>
+
+        <div id="display-wrapper" style="display: none;" aria-live="polite" aria-atomic="true">
+            <div class="key-container" id="card-key" role="button" tabindex="0" aria-labelledby="label-key val-key">
+                <h4 id="label-key">Key</h4>
+                <div class="Key-Content" id="val-key">-</div>
+                <small class="copy-hint">Click to copy</small>
+            </div>
+            <div class="key-container" id="card-code" role="button" tabindex="0" aria-labelledby="label-code val-code">
+                <h4 id="label-code">Code</h4>
+                <div class="Key-Content" id="val-code">-</div>
+                <small class="copy-hint">Click to copy</small>
+            </div>
+            <div class="key-container" id="card-keycode" role="button" tabindex="0" aria-labelledby="label-keycode val-keycode">
+                <h4 id="label-keycode">Key Code</h4>
+                <div class="Key-Content" id="val-keycode">-</div>
+                <small class="copy-hint">Click to copy</small>
+            </div>
+        </div>
+    </main>
 
     <script src="Script.js" ></script>
 </body>

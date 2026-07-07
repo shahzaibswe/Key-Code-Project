@@ -59,3 +59,8 @@
 .key-container:hover{
    background-color: rgba(0, 255, 255,0.7);
 }
+.pressed .key-container {
+  transform: scale(0.95);
+  box-shadow: 0px 0px 20px 5px rgba(0, 255, 255, 0.5);
+  background-color: rgba(0, 255, 255, 0.75);
+}

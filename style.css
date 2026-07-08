@@ -1,32 +1,34 @@
- *{
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+}
 
- }
- body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     min-height: 100vh;
-    background: linear-gradient( to right, #2e1e4f , #47135e);
- }
- .container{
+    background: linear-gradient(to right, #2e1e4f, #47135e);
+}
+
+.container {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: rgba(255, 255, 2555, 0.25);
-    box-shadow: 0px 8px 32px 0px  rgba(31, 38, 135, 0.35);
-   backdrop-filter: blur(4px); 
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 8px 32px 0px rgba(31, 38, 135, 0.35);
+    backdrop-filter: blur(4px);
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255,0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     transition: background 0.3s ease-in-out;
-      
- }
- .key-container{
-    display: flex ;
+}
+
+.key-container {
+    position: relative;
+    display: flex;
     flex-direction: column;
     font-size: 20px;
     font-weight: bold;
@@ -34,28 +36,46 @@
     color: #afff;
     margin: 2.5rem;
     min-width: 150px;
-    background: rgba(0, 255, 255,0.5);
-    box-shadow: 0px 8px 32px 0px rgba(31, 38, 135 , 0.37);
-    backdrop-filter: blur(2.52px) ;
+    background: rgba(0, 255, 255, 0.5);
+    box-shadow: 0px 8px 32px 0px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2.52px);
     border-radius: 10px;
-    border: 1px solid rgb(255, 255,255,0.18);
-    transition:background 0.3s ease-in-out; 
+    border: 1px solid rgb(255, 255, 255, 0.18);
+    transition: background 0.3s ease-in-out, transform 0.1s ease-in-out;
+    cursor: pointer;
 }
 
-.key-container h4{
+.key-container h4 {
     position: absolute;
     top: -2rem;
     left: 0;
     text-align: center;
     width: 100%;
 }
-.Key-Content{
-   margin-top: 10px;
 
+.Key-Content {
+    margin-top: 10px;
 }
-.container:hover{
-   background-color: rgba(255, 255, 255, 0.35);
+
+.container:hover {
+    background-color: rgba(255, 255, 255, 0.35);
 }
-.key-container:hover{
-   background-color: rgba(0, 255, 255,0.7);
+
+.key-container:hover {
+    background-color: rgba(0, 255, 255, 0.7);
+}
+
+.key-container:focus-visible {
+    outline: 2px solid #afff;
+    outline-offset: 4px;
+}
+
+.key-container.active {
+    transform: scale(0.95);
+    background-color: #4ade80 !important;
+}
+
+#display-container {
+    display: flex;
+    flex-direction: column;
 }
